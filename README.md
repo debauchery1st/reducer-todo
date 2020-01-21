@@ -38,7 +38,7 @@ Follow these steps for completing your project.
 - [✓] 1. Set an initial state value through a reducer and render a list of todos from that state
 - [✓] 1. Add a form that dispatches an "ADD_TODO" action to be able to add a todo item to your list
 - [✓] 1. Build a function that let's you mark todo items as completed when you click on them
-- [ ] 1. Biuld a function that let's you clear completed todos when you click on a "Clear Completed" button
+- [✓] 1. Biuld a function that let's you clear completed todos when you click on a "Clear Completed" button
 
 ### STEP 1 - Build a simple reducer and initial state
 
@@ -72,13 +72,13 @@ You get to choose how you want to set up your components. Please don't just do t
 
 - [✓] Build a function that will dispatch an action to toggle a todo's completed field
 - [✓] Invoke this new function when you click on a todo
-- [ ] Style your todo to somehow show that it is completed (be creative here!)
+- [✓] Style your todo to somehow show that it is completed (be creative here!)
 - [✓] Write the `case` in your reducer for toggling the completed property
 
 ### STEP 5 - Clearing completed todos
 
 - [✓] Build a function that will dispatch an action to filter out any completed todos
-- [ ] Invoke this new function when you click on a "Clear completed" button
+- [✓] Invoke this new function when you click on a "Clear completed" button
 - [✓] Write the `case` in your reducer for filtering completed todos
 
 ## Stretch Problems

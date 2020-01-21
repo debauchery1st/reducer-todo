@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useReducer } from "react";
 import { reducer, initialState } from "./reducers/Todo.reducer";
 import TodoList from "./components/TodoList";
-
-import "./App.css";
+import InputForm from "./components/InputForm";
 
 function App() {
   const [tasks, dispatch] = useReducer(reducer, [initialState]);
@@ -15,20 +14,26 @@ function App() {
     dispatch({ type: "TOGGLE", payload: task });
     setState({ tasks: state.tasks, inputValue: state.inputValue });
   };
-  const handleAdd = () => {
+  const handleAdd = e => {
+    e.preventDefault();
     dispatch({ type: "ADD", payload: state.inputValue });
     setState({ tasks: state.tasks, inputValue: "" }); // clear input
+  };
+  const handleClear = () => {
+    console.log("clear");
+    dispatch({ type: "CLEAR_COMPLETE" });
+    setState({ tasks: state.tasks, inputValue: state.inputValue }); // clear input
   };
   return (
     <div className="App">
       <h1>Todo</h1>
       <TodoList tasks={tasks} handler={handleCompletness} />
-      <input
-        placeholder="new task"
-        onChange={handleChange}
-        value={state.inputValue}
+      <InputForm
+        inputValue={state.inputValue}
+        handleAdd={handleAdd}
+        handleChange={handleChange}
       />
-      <button onClick={handleAdd}>add</button>
+      <button onClick={handleClear}>clear completed</button>
     </div>
   );
 }

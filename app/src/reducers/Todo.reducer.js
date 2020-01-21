@@ -24,6 +24,8 @@ const reducer = (state, action) => {
         { ...action.payload, completed: !action.payload.completed },
         ...state.slice(idx + 1)
       ];
+    case "CLEAR_COMPLETE":
+      return state.filter(task => task.completed === false);
     default:
       return state;
   }
