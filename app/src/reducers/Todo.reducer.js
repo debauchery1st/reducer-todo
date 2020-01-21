@@ -5,10 +5,17 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
-  const idx = state.indexOf(action.payload);
+  const idx = state.indexOf(action.payload) || 0;
   switch (action.type) {
     case "ADD":
-      return { ...state, id: new Date(), item: action.payload };
+      return [
+        ...state,
+        {
+          ...initialState,
+          item: action.payload,
+          id: new Date().getTime()
+        }
+      ];
     case "REMOVE":
       return [...state.slice(0, idx), ...state.slice(idx + 1)];
     case "TOGGLE":
