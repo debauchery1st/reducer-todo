@@ -9,7 +9,7 @@ const InputForm = ({ inputValue, handleAdd, handleChange }) => {
         onChange={handleChange}
         value={inputValue}
       />
-      <AddButton>+</AddButton>
+      <AddButton title="Add Task">+</AddButton>
     </form>
   );
 };

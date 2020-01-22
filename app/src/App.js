@@ -3,21 +3,7 @@ import { useReducer } from "react";
 import { reducer, initialState } from "./reducers/Todo.reducer";
 import TodoList from "./components/TodoList";
 import InputForm from "./components/InputForm";
-import styled from "styled-components";
-
-const ClearButton = styled.button`
-  padding: 0.2rem;
-  margin: 0.5rem;
-  border-radius: 0.5rem;
-`;
-
-const Container = styled.div`
-  background-color: #35495e;
-  color: #347474;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-`;
+import { RowContainer, Container, Image } from "./components/Styles";
 
 function App() {
   const [tasks, dispatch] = useReducer(reducer, [initialState]);
@@ -49,12 +35,19 @@ function App() {
     <Container className="App">
       <h1>Todo</h1>
       <TodoList tasks={tasks} handler={handleCompletness} />
-      <ClearButton onClick={handleClear}>clear completed</ClearButton>
-      <InputForm
-        inputValue={state.inputValue}
-        handleAdd={handleAdd}
-        handleChange={handleChange}
-      />
+      <RowContainer>
+        <Image
+          src="/trashcan.svg"
+          onClick={handleClear}
+          alt="Clear completed tasks"
+          title="Clear completed tasks"
+        />
+        <InputForm
+          inputValue={state.inputValue}
+          handleAdd={handleAdd}
+          handleChange={handleChange}
+        />
+      </RowContainer>
     </Container>
   );
 }

@@ -8,7 +8,12 @@ const InputBox = styled.input`
 `;
 
 const AddButton = styled.button`
+  border: none;
   border-radius: 0.5rem;
+  color: white;
+  background-color: #63b7af;
+  text-shadow: 1px 1px 2px grey;
+  cursor: pointer;
 `;
 
 const ListItem = styled.li`
@@ -33,4 +38,22 @@ const ListItem = styled.li`
   }
 `;
 
-export { InputBox, AddButton, ListItem };
+const Container = styled.div`
+  background-color: #35495e;
+  color: #347474;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+`;
+
+const Image = styled.img`
+  width: 30px;
+  cursor: pointer;
+`;
+
+const RowContainer = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+`;
+
+export { InputBox, AddButton, ListItem, Container, Image, RowContainer };
