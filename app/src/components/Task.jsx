@@ -7,7 +7,7 @@ const ListItem = styled.li`
   texgt-align: left;
   cursor: pointer;
   padding: 0.5rem 0.5rem;
-  margin: 0.1rem;
+  margin: 0.4rem;
   border-radius: 0.5rem;
   border: 0.1rem solid grey;
   background-color: #347474;

@@ -3,6 +3,13 @@ import { useReducer } from "react";
 import { reducer, initialState } from "./reducers/Todo.reducer";
 import TodoList from "./components/TodoList";
 import InputForm from "./components/InputForm";
+import styled from "styled-components";
+
+const ClearButton = styled.button`
+  padding: 0.2rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+`;
 
 function App() {
   const [tasks, dispatch] = useReducer(reducer, [initialState]);
@@ -33,7 +40,7 @@ function App() {
         handleAdd={handleAdd}
         handleChange={handleChange}
       />
-      <button onClick={handleClear}>clear completed</button>
+      <ClearButton onClick={handleClear}>clear completed</ClearButton>
     </div>
   );
 }
