@@ -8,7 +8,7 @@ const reducer = (state, action) => {
   const idx = state.indexOf(action.payload) || 0;
   switch (action.type) {
     case "ADD":
-      return [
+      const added = [
         ...state,
         {
           ...initialState,
@@ -16,16 +16,24 @@ const reducer = (state, action) => {
           id: new Date().getTime()
         }
       ];
+      action.writer(added);
+      return added;
     case "REMOVE":
-      return [...state.slice(0, idx), ...state.slice(idx + 1)];
+      const removed = [...state.slice(0, idx), ...state.slice(idx + 1)];
+      action.writer(removed);
+      return removed;
     case "TOGGLE":
-      return [
+      const toggled = [
         ...state.slice(0, idx),
         { ...action.payload, completed: !action.payload.completed },
         ...state.slice(idx + 1)
       ];
+      action.writer(toggled);
+      return toggled;
     case "CLEAR_COMPLETE":
-      return state.filter(task => task.completed === false);
+      const cleared = state.filter(task => task.completed === false);
+      action.writer(cleared);
+      return cleared;
     default:
       return state;
   }

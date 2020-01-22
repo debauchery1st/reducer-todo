@@ -2,8 +2,7 @@ import React from "react";
 import Task from "./Task";
 
 const TodoList = ({ tasks, handler }) => {
-  const tl = tasks || [];
-  console.log(tasks);
+  const tl = tasks.map ? tasks : [];
   return (
     <span className="Todo">
       {tl.map(t => (
