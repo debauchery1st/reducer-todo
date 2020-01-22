@@ -1,16 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-
-const InputBox = styled.input`
-  padding: 0.5rem;
-  font-size: large;
-  border-radius: 0.5rem;
-  margin: 0.5rem;
-`;
-
-const AddButton = styled.button`
-  border-radius: 0.5rem;
-`;
+import { InputBox, AddButton } from "./Styles";
 
 const InputForm = ({ inputValue, handleAdd, handleChange }) => {
   return (
@@ -20,7 +9,7 @@ const InputForm = ({ inputValue, handleAdd, handleChange }) => {
         onChange={handleChange}
         value={inputValue}
       />
-      <AddButton>add</AddButton>
+      <AddButton>+</AddButton>
     </form>
   );
 };
