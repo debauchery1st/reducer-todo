@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useReducer } from "react";
 import { reducer, initialState } from "./reducers/Todo.reducer";
 import TodoList from "./components/TodoList";
@@ -7,12 +7,21 @@ import { RowContainer, Container, Image } from "./components/Styles";
 import useLocalstorage from "./hooks/useLocalStorage";
 
 function App() {
-  const [localStore, setLocalStore] = useLocalstorage("todoReducer", {});
   const [state, setState] = useState({
-    tasks: localStore.todoReducer || [initialState],
-    inputValue: ""
+    tasks: [initialState],
+    inputValue: "",
+    loaded: false
   });
+  const [localStore, setLocalStore] = useLocalstorage(
+    "todoReducer",
+    state.tasks
+  );
   const [tasks, dispatch] = useReducer(reducer, state.tasks);
+  useEffect(() => {
+    if (state.loaded) return;
+    setState({ ...state, loaded: true });
+    dispatch({ type: "LOAD", storage: localStore.todoReducer });
+  }, [localStore.todoReducer, state]);
 
   const handleChange = e => {
     setState({ tasks, inputValue: e.currentTarget.value });

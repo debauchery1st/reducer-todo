@@ -5,7 +5,7 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
-  const idx = state.indexOf(action.payload) || 0;
+  const idx = state && state.length ? state.indexOf(action.payload) : 0;
   switch (action.type) {
     case "ADD":
       const added = [
@@ -34,7 +34,12 @@ const reducer = (state, action) => {
       const cleared = state.filter(task => task.completed === false);
       action.writer(cleared);
       return cleared;
+    case "LOAD":
+      if (!action.storage) return state;
+      // console.log("loading", action.storage);
+      return action.storage;
     default:
+      action.writer(state);
       return state;
   }
 };
